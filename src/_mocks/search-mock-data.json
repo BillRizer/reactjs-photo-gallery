@@ -1,0 +1,34 @@
+{
+    "page": 1,
+    "per_page": 15,
+    "photos": [
+        {
+            "id": 2050994,
+            "width": 3648,
+            "height": 5472,
+            "url": "https://www.pexels.com/photo/woman-standing-near-yellow-petaled-flower-2050994/",
+            "photographer": "Edu Carvalho",
+            "photographer_url": "https://www.pexels.com/@educarvalho",
+            "photographer_id": 1026575,
+            "avg_color": "#5A4B39",
+            "src": "https://images.pexels.com/photos/2050994/pexels-photo-2050994.jpeg",
+           
+            "alt": "Woman Standing Near Yellow-petaled Flower"
+        },
+        {
+            "id": 837358,
+            "width": 6100,
+            "height": 4067,
+            "url": "https://www.pexels.com/photo/man-in-brown-coat-and-gray-backpack-posing-for-a-photo-837358/",
+            "photographer": "Andrea Piacquadio",
+            "photographer_url": "https://www.pexels.com/@olly",
+            "photographer_id": 224453,
+            "avg_color": "#988974",
+            "src": "https://images.pexels.com/photos/837358/pexels-photo-837358.jpeg",
+           
+            "alt": "Man in Brown Coat and Gray Backpack Posing for a Photo"
+        }
+           ],
+    "total_results": 8000,
+    "next_page": "https://api.pexels.com/v1/search/?page=2\u0026per_page=15\u0026query=people"
+}
