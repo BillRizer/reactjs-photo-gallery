@@ -1,7 +1,13 @@
-import React, { useEffect, useState } from "react";
+import React from "react";
+
+import { RoutesComponent } from "./application/router";
 
 function App() {
-  return <div className="App">uau this a simple test?</div>;
+  return (
+    <>
+      <RoutesComponent></RoutesComponent>
+    </>
+  );
 }
 
 export default App;
