@@ -30,5 +30,16 @@ const theme = {
     h1: "30px",
     h2: "24px",
   },
+  form:{
+    fields_bg:"#3E3D42",
+    fields_bg_focus:"#3E3D42",
+    fields_text:"#f5f3f4",
+    fields_text_focus:"#f5f3f4",
+  },
+  button:{
+    primary: "#5e60ce",
+    primary_light: "rgba(94, 96, 206,0.9)",
+    primary_text: "#f5f3f4",
+  }
 };
 export default theme;
