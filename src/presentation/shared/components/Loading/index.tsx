@@ -5,7 +5,7 @@ import {
     Brand,
 } from './styles';
 
-import logo from '../../../../assets/icons/logo.png';
+import logo from '../../../../assets/img/logo.png';
  
 interface IProps{
     isActive:Boolean|undefined
