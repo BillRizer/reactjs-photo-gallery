@@ -1,7 +1,9 @@
 import React, { useEffect } from "react";
+import { useTranslation } from "react-i18next";
 
 // TODO: fix this, path not working imporing e.g. 'src/assets ...'
 import IconSearch from '../../../../assets/icons/icon-search-image.svg';
+import { Button } from "../../../shared/components/Button";
 import { Container } from "./style";
 
 interface Props {
@@ -14,11 +16,11 @@ export const SearchBoxComponent = ({
   ...props
 }: Props) => {
   useEffect(() => {}, []);
-
+  const {t} = useTranslation()
   return (
     <Container>
       <img src={IconSearch} alt=''/>
-      search
+      {t('search')}
       <input
         type="text"
         value={searchQuery}
@@ -26,7 +28,8 @@ export const SearchBoxComponent = ({
           setSearchQuery(e.target.value);
         }}
       />
-      <button>Go</button>
+      <Button label="Go"></Button>
+      
     </Container>
   );
 };

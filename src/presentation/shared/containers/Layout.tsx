@@ -1,19 +1,11 @@
 import React from "react";
-import { Link, Outlet } from "react-router-dom";
+import {  Outlet } from "react-router-dom";
+import { Header } from "../components/Header";
 
 export const LayoutContainer = () => {
   return (
     <div>
-      <nav>
-        <ul>
-          <li>
-            <Link to="/">Home</Link>
-          </li>
-          <li>
-            <Link to="/about">About</Link>
-          </li>
-        </ul>
-      </nav>
+      <Header></Header>
       <Outlet />
     </div>
   );

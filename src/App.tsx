@@ -1,18 +1,25 @@
-import React from "react";
+import React, { useState } from "react";
 import { ThemeProvider } from "styled-components";
+import AppProvider from "./application/hooks";
 
 import { RoutesComponent } from "./application/router";
-import theme from "./global/styles/theme";
+import themeDark from "./global/styles/theme-dark";
+import themeLight from "./global/styles/theme-light";
+import "./global/styles/global.css";
+import "./i18n";
 
-function App() {
+const App = () => {
+
+  const themeMode = window?.localStorage?.getItem('theme') === 'light' ? themeLight : themeDark;
   return (
     <>
-    <ThemeProvider theme={theme}>
-    <RoutesComponent></RoutesComponent>
-    </ThemeProvider>
-      
+      <AppProvider>
+        <ThemeProvider theme={themeMode}>
+          <RoutesComponent></RoutesComponent>
+        </ThemeProvider>
+      </AppProvider>
     </>
   );
-}
+};
 
 export default App;
