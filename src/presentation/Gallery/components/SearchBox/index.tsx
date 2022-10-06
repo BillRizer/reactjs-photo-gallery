@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React, { useContext, useEffect } from "react";
 import { useTranslation } from "react-i18next";
 
 // TODO: fix this, path not working imporing e.g. 'src/assets ...'
@@ -19,8 +19,10 @@ export const SearchBoxComponent = ({
 }: Props) => {
   useEffect(() => {}, []);
   const {t} = useTranslation()
+  
   return (
     <Container>
+
       <Brand>
       <img src={logoBrand} alt=''/>
       </Brand>

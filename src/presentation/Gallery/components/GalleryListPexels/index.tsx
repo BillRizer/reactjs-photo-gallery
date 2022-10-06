@@ -1,21 +1,17 @@
-import React, { useEffect, useState } from "react";
+import React from "react";
 import Gallery from "react-photo-gallery";
-import { ISearchData } from "../../../../application/types/search.type";
+import { IGalleryData } from "../../../../application/types/gallery.type";
 
-
-export const GalleryListMosaic= ()=> {
-  const [search, setSearch] = useState<ISearchData>();
-
-  useEffect(() => {
-    setSearch(require('../../../../_mocks/search-mock-data.json'))
-  }, []);
-
-  return (
-    <div className="App">
-        {search && search.photos.length >0 &&
-          <Gallery photos={search?.photos} key={""}/>
-        }
-    </div>
-  );
+interface Props {
+  data: IGalleryData;
 }
 
+export const GalleryListMosaic = ({ data }: Props) => {
+  return (
+    <div>
+      {data.photos && data.photos.length > 0 && (
+        <Gallery photos={data?.photos} key={""} />
+      )}
+    </div>
+  );
+};

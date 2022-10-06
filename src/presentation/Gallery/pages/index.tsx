@@ -1,45 +1,57 @@
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import { GalleryListCustom } from "../components/GalleryListCustom";
 import { GalleryListMosaic } from "../components/GalleryListPexels";
 import { SearchBoxComponent } from "../components/SearchBox";
-import { useTranslation } from "react-i18next";
-import { useLoading } from "../../../application/hooks/loading";
+import { DividerStyled } from "../../shared/components-styled/divider";
+import { useDataFromPexels } from "../hooks/data-from-pexels";
+import IconGrid from "../../../assets/icons/icon-grid.svg";
+import IconMosaic from "../../../assets/icons/icon-mosaic.svg";
+import { Icon } from "../../shared/components/Icon";
+
 enum ETypeGallery {
   MOSAIC = "MOSAIC",
   CUSTOM = "CUSTOM",
 }
+
 export const GalleryPage = () => {
   const [typeGallery, setTypeGallery] = useState<ETypeGallery>(
     ETypeGallery.CUSTOM
   );
   const [searchQuery, setSearchQuery] = useState<string>("");
-  const { t } = useTranslation();
 
+  const { gallery, loadGallery } = useDataFromPexels();
+
+  console.log(gallery);
   return (
     <div>
-      <h2>{t('gallery.greetings')}</h2>
-      gallery page = {searchQuery}
+      <DividerStyled size="30px"></DividerStyled>
       <SearchBoxComponent
         searchQuery={searchQuery}
         setSearchQuery={setSearchQuery}
       ></SearchBoxComponent>
-      <button
-        onClick={() => setTypeGallery(ETypeGallery.MOSAIC)}
-        disabled={typeGallery === ETypeGallery.MOSAIC}
-      >
-        use MOSAIC
-      </button>
-      <button
-        onClick={() => setTypeGallery(ETypeGallery.CUSTOM)}
-        disabled={typeGallery === ETypeGallery.CUSTOM}
-      >
-        use Custom
-      </button>
-      {typeGallery === ETypeGallery.MOSAIC && (
-        <GalleryListMosaic/>
+
+      <Icon
+        size="medium"
+        cursorPointer={true}
+        icon={typeGallery === ETypeGallery.MOSAIC ? IconMosaic : IconGrid}
+        onClick={() =>
+          setTypeGallery(
+            typeGallery === ETypeGallery.MOSAIC
+              ? ETypeGallery.CUSTOM
+              : ETypeGallery.MOSAIC
+          )
+        }
+      ></Icon>
+
+      <button onClick={() => loadGallery()}>LOAD</button>
+
+      <DividerStyled size="30px"></DividerStyled>
+      
+      {typeGallery === ETypeGallery.MOSAIC && gallery && (
+        <GalleryListMosaic data={gallery} />
       )}
-      {typeGallery === ETypeGallery.CUSTOM && (
-        <GalleryListCustom/>
+      {typeGallery === ETypeGallery.CUSTOM && gallery && (
+        <GalleryListCustom data={gallery} />
       )}
     </div>
   );
