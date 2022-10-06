@@ -10,7 +10,7 @@ interface IPhoto {
   height:number;
   alt: string;
 }
-export interface ISearchData {
+export interface IGalleryData {
   page: number;
   per_page: number;
   photos: Array<IPhoto>;
