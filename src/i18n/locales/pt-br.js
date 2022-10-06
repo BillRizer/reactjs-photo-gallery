@@ -7,7 +7,11 @@ const tra= {
       home:"Principal",
       about:"Sobre"
     },
-    search:"Buscar"
+    search:"Buscar",
+    notfound:{
+      notfound:"Página não encontrada",
+      buy_coffe:"Me pague um café que crio esta página para você"
+    }
   },
 };
 export default tra
