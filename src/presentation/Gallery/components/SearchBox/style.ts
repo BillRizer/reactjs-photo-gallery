@@ -10,7 +10,6 @@ export const Container = styled.div`
 export const Brand = styled.div`
     display: flex;
     width: 150px;
-    /* background: ${(props) => props.theme.colors.shape}; */
     & img{
         width: 100%;
     }

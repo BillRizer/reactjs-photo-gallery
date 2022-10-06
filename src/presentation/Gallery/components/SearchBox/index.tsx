@@ -30,6 +30,7 @@ export const SearchBoxComponent = ({
       <div>
       <Input
         type="text"
+        data-testid="input"
         value={searchQuery}
         placeholder= {t('search')}
         onChange={(e) => {
