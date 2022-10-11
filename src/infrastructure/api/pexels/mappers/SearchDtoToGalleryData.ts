@@ -3,8 +3,11 @@ import { ISearch } from "../dtos/get-search.dto";
 
 
 export const SearchDtoToGalleryData = (search: ISearch): IGalleryData => {
-  const { page, per_page, photos } = search;
+  const { page, per_page, photos,source } = search;
+  console.log("source",source);
+  
   const data: IGalleryData = {
+    source:source?source:'api',
     page: page,
     per_page: per_page,
     photos: photos.map(photo =>{

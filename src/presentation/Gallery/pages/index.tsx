@@ -7,7 +7,8 @@ import { useDataFromPexels } from "../hooks/data-from-pexels";
 import IconGrid from "../../../assets/icons/icon-grid.svg";
 import IconMosaic from "../../../assets/icons/icon-mosaic.svg";
 import { Icon } from "../../shared/components/Icon";
-import { PageStyled, Tools } from "./style";
+import { PageStyled, Tools, Notifications, Notification } from "./style";
+import { useTranslation } from "react-i18next";
 
 enum ETypeGallery {
   MOSAIC = "MOSAIC",
@@ -19,15 +20,18 @@ export const GalleryPage = () => {
     ETypeGallery.CUSTOM
   );
   const [searchQuery, setSearchQuery] = useState<string>("");
+  const [pexelsApiKey, setPexelsApiKey] = useState<string>("");
 
   const { gallery, loadGallery } = useDataFromPexels();
+  const { t } = useTranslation();
 
   function submit() {
-    loadGallery(searchQuery);
+    loadGallery(searchQuery,pexelsApiKey);
   }
   console.log(gallery);
   return (
-    <PageStyled className={!gallery?'full':''}>
+    <PageStyled className={!gallery ? "full" : ""}>
+      <input type="text" onChange={(e)=>{setPexelsApiKey(e.target.value)}} value={pexelsApiKey} />
       <DividerStyled size="30px"></DividerStyled>
       <SearchBoxComponent
         searchQuery={searchQuery}
@@ -50,7 +54,19 @@ export const GalleryPage = () => {
           ></Icon>
         </Tools>
       )}
-
+      {gallery?.source === "mock" && (
+        //TODO: create component for this (ToastNotifications)
+        // !!!Dont use this in input data!!!
+        <Notifications >
+          <Notification
+            dangerouslySetInnerHTML={{
+              __html: t("common.pexels_apikey_wrong", {
+                interpolation: { escapeValue: false },
+              }),
+            }}
+          />
+        </Notifications>
+      )}
       <DividerStyled size="30px"></DividerStyled>
       {typeGallery === ETypeGallery.MOSAIC && gallery && (
         <GalleryListMosaic data={gallery} />

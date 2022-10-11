@@ -22,6 +22,7 @@ interface IPhoto {
   alt: string;
 }
 export interface ISearch {
+  source?:string;
   page: number;
   per_page: number;
   photos: Array<IPhoto>;

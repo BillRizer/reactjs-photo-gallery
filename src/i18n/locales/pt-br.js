@@ -15,6 +15,9 @@ const tra= {
     notallowed:{
       notallowed:"Página não permitida",
       buy_coffe:"Me pague um café."
+    },
+    common:{
+      pexels_apikey_wrong:"Sua <b>chave de api PEXELS está errada</b>, Mas busquei estes tomates estáticos para você"
     }
   },
 };

@@ -15,6 +15,9 @@ const tra = {
       notallowed:{
         notallowed:"Page not allowed",
         buy_coffe:"Buy me a coffee"
+      },
+      common:{
+        pexels_apikey_wrong:"Your <b>PEXELS api key is wrong</b>, But I looked up these static tomatoes for you"
       }
     },
   };

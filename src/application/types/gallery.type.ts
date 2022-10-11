@@ -11,6 +11,7 @@ interface IPhoto {
   alt: string;
 }
 export interface IGalleryData {
+  source:string,
   page: number;
   per_page: number;
   photos: Array<IPhoto>;
