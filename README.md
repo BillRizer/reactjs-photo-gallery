@@ -1,8 +1,8 @@
 
 # React Photo Gallery
 >this project is an interface that accesses the pexels api (pexels.com) and displays the images in a simple way.
+<video src='https://user-images.githubusercontent.com/5104527/195165791-97aced06-a828-4246-97c0-47cfa29da9ed.webm' width=180/>
 
-![image](https://user-images.githubusercontent.com/5104527/194310823-ac93ce14-eda5-431b-af1f-4c65d1afec02.png)
 
 *Install*
 ```
