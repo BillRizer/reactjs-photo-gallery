@@ -34,20 +34,23 @@ export const GalleryPage = () => {
         setSearchQuery={setSearchQuery}
         submit={submit}
       ></SearchBoxComponent>
-      <Tools>
-        <Icon
-          size="medium"
-          cursorPointer={true}
-          icon={typeGallery === ETypeGallery.MOSAIC ? IconGrid:IconMosaic}
-          onClick={() =>
-            setTypeGallery(
-              typeGallery === ETypeGallery.MOSAIC
-                ? ETypeGallery.CUSTOM
-                : ETypeGallery.MOSAIC
-            )
-          }
-        ></Icon>
-      </Tools>
+      {gallery && (
+        <Tools>
+          <Icon
+            size="medium"
+            cursorPointer={true}
+            icon={typeGallery === ETypeGallery.MOSAIC ? IconGrid : IconMosaic}
+            onClick={() =>
+              setTypeGallery(
+                typeGallery === ETypeGallery.MOSAIC
+                  ? ETypeGallery.CUSTOM
+                  : ETypeGallery.MOSAIC
+              )
+            }
+          ></Icon>
+        </Tools>
+      )}
+
       <DividerStyled size="30px"></DividerStyled>
       {typeGallery === ETypeGallery.MOSAIC && gallery && (
         <GalleryListMosaic data={gallery} />
