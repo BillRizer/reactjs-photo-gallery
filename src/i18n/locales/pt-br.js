@@ -11,6 +11,10 @@ const tra= {
     notfound:{
       notfound:"Página não encontrada",
       buy_coffe:"Me pague um café que crio esta página para você"
+    },
+    notallowed:{
+      notallowed:"Página não permitida",
+      buy_coffe:"Me pague um café."
     }
   },
 };

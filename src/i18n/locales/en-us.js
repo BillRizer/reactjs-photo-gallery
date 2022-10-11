@@ -11,6 +11,10 @@ const tra = {
       notfound:{
         notfound:"Page not found",
         buy_coffe:"Buy me a coffee and I will create this page for you"
+      },
+      notallowed:{
+        notallowed:"Page not allowed",
+        buy_coffe:"Buy me a coffee"
       }
     },
   };

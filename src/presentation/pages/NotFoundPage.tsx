@@ -10,8 +10,10 @@ const NotFoundStyled = styled.div`
   flex: 1;
   flex-direction: column;
 `;
-const MaskStyled = styled.div`
-  
+const ImgStyled = styled.img`
+  max-width: 500px;
+    border-radius: 3px;
+    box-shadow: 0px 1px 7px 0px #aaa;
 `;
 export const NotFoundPage = () => {
   const {t} = useTranslation()
@@ -20,9 +22,9 @@ export const NotFoundPage = () => {
       <DividerStyled size="40px"></DividerStyled>
       <h1>{t('notfound.notfound')}</h1>
       <p>{t('notfound.buy_coffe')}</p>
-      <MaskStyled>
-        <img src={ImgConfusedLost} alt="" />
-      </MaskStyled>
+      <div>
+        <ImgStyled src={ImgConfusedLost} alt="" />
+      </div>
     </NotFoundStyled>
   );
 };
