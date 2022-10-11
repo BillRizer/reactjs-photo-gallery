@@ -38,7 +38,7 @@ export const GalleryPage = () => {
         <Icon
           size="medium"
           cursorPointer={true}
-          icon={typeGallery === ETypeGallery.MOSAIC ? IconMosaic : IconGrid}
+          icon={typeGallery === ETypeGallery.MOSAIC ? IconGrid:IconMosaic}
           onClick={() =>
             setTypeGallery(
               typeGallery === ETypeGallery.MOSAIC
