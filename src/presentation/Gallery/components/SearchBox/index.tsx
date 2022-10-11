@@ -1,4 +1,4 @@
-import React, { useContext, useEffect } from "react";
+import React, {  useEffect } from "react";
 import { useTranslation } from "react-i18next";
 
 // TODO: fix this, path not working imporing e.g. 'src/assets ...'
@@ -11,15 +11,20 @@ import { Brand, Container } from "./style";
 interface Props {
   searchQuery: string;
   setSearchQuery: any;
+  submit:any;
 }
 export const SearchBoxComponent = ({
   searchQuery,
   setSearchQuery,
+  submit,
   ...props
 }: Props) => {
   useEffect(() => {}, []);
   const {t} = useTranslation()
   
+  function handleSubmit(){
+    submit()
+  }
   return (
     <Container>
 
@@ -37,7 +42,7 @@ export const SearchBoxComponent = ({
           setSearchQuery(e.target.value);
         }}
         />
-        <Button  disabled={searchQuery.length>0?false:true} label="Go"></Button>
+        <Button data-testid="submit" onClick={handleSubmit}  disabled={searchQuery.length>0?false:true} label={t('search')}></Button>
       
       </div>     
     </Container>
