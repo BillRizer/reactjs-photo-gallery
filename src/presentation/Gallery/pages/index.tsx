@@ -7,7 +7,7 @@ import { useDataFromPexels } from "../hooks/data-from-pexels";
 import IconGrid from "../../../assets/icons/icon-grid.svg";
 import IconMosaic from "../../../assets/icons/icon-mosaic.svg";
 import { Icon } from "../../shared/components/Icon";
-import { Tools } from "./style";
+import { PageStyled, Tools } from "./style";
 
 enum ETypeGallery {
   MOSAIC = "MOSAIC",
@@ -27,7 +27,7 @@ export const GalleryPage = () => {
   }
   console.log(gallery);
   return (
-    <div>
+    <PageStyled className={!gallery?'full':''}>
       <DividerStyled size="30px"></DividerStyled>
       <SearchBoxComponent
         searchQuery={searchQuery}
@@ -58,6 +58,6 @@ export const GalleryPage = () => {
       {typeGallery === ETypeGallery.CUSTOM && gallery && (
         <GalleryListCustom data={gallery} />
       )}
-    </div>
+    </PageStyled>
   );
 };
