@@ -2,7 +2,7 @@ import { IGalleryData } from "../../../../application/types/gallery.type";
 import { ISearch } from "../dtos/get-search.dto";
 
 
-export const SearchDtoToGalleryData = (search: ISearch): IGalleryData => {
+export const SearchDtoToGalleryDataMapper = (search: ISearch): IGalleryData => {
   const { page, per_page, photos,source } = search;
   console.log("source",source);
   
