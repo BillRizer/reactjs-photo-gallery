@@ -1,5 +1,5 @@
 import React, { useState, useCallback, useContext, createContext } from 'react';
-import LoadingComponent from '../../presentation/shared/components/Loading';
+import LoadingComponent from '../components/Loading';
 
 interface LoadinContextData {
   showLoading(): void;

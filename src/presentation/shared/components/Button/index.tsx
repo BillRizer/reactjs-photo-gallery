@@ -1,18 +1,21 @@
-import React from 'react';
-import {ButtonStyled} from './style';
+import React from "react";
+import { IconType } from "react-icons";
+import { ButtonStyled } from "./style";
 
 interface ButtonProps {
-  primary?: boolean;
   backgroundColor?: string;
-  size?: 'small' | 'medium' | 'large';
+  size?: "small" | "medium" | "large";
+  theme?: "only-text"|"default"|"primary";
+  Icon?: any;
   label: string;
-  disabled: boolean;
+  disabled?: boolean;
   onClick?: () => void;
 }
 
 export const Button = ({
-  primary = false,
-  size = 'medium',
+  size = "medium",
+  theme,
+  Icon,
   backgroundColor,
   label,
   disabled,
@@ -22,12 +25,16 @@ export const Button = ({
     //['storybook-button', `storybook-button--${size}`, mode].join(' ')
     <ButtonStyled
       type="button"
-      className={'primary'}
+      className={`${theme || ""} ${size || ""}`}
       disabled={disabled}
       style={{ backgroundColor }}
       {...props}
     >
-      {label}
+      <>
+      {Icon&&(<div className="icon">{Icon}</div>)}
+        
+        {label}
+      </>
     </ButtonStyled>
   );
 };

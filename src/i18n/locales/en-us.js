@@ -18,7 +18,9 @@ const tra = {
       },
       common:{
         pexels_apikey_wrong:"Your <b>PEXELS api key is wrong</b>, But I looked up these static tomatoes for you"
-      }
+      },
+      pexels_api_key:'Pexels API key',
+      loading:"Loading"
     },
   };
   export default tra

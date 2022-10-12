@@ -3,7 +3,7 @@ import styled from "styled-components";
 export const InputStyled = styled.input`
 background: ${(props) => props.theme.form.fields_bg};
 border: 3px solid ${(props) => props.theme.form.fields_bg};
-border-radius: 8px;
+border-radius: 4px;
 font-style: normal;
 font-weight: 400;
 font-size: 16px;

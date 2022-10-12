@@ -12,9 +12,9 @@ export const GalleryListCustom = ({ data }: Props) => {
       {data.photos && data.photos.length > 0 && (
         <Photos>
           {data.photos.map((photo, index) => (
-            <PhotoBox>
+            <PhotoBox key={photo.id}>
               <PhotoMask>
-                <Photo src={photo.src} key={photo.id} />
+                <Photo src={photo.src}  />
                 <PhotoDesc></PhotoDesc>
               </PhotoMask>
             </PhotoBox>

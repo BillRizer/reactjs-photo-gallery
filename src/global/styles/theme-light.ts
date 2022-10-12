@@ -40,6 +40,22 @@ const theme = {
     primary: "#5e60ce",
     primary_light: "rgba(94, 96, 206,0.9)",
     primary_text: "#f5f3f4",
+    default: "#f5f3f4",
+    default_light: "rgba(245, 243, 244,0.9)",
+    default_text: "#3E3D42",
+  },
+  components:{
+    loading:{
+      bg:"#f1f1f1",
+      text:"#3E3D42"
+    },
+    modal:{
+      scree_bg:"rgba(255, 255, 255,0.9)",
+      bg:"#fff",
+      primary:"#3E3D42",
+      primary_light:"rgba(62, 61, 66,0.5)",
+      secondary:"#FFFFFF",
+    }
   }
 
 };

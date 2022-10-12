@@ -3,7 +3,7 @@ import { getSearchPexels } from "../../../application/services/get-search-pexels
 import { IGalleryData } from "../../../application/types/gallery.type";
 
 interface IContextData {
-  loadGallery(query: string, pexelsApiKey: string): void;
+  loadGallery(query: string, pexelsApiKey: string): Promise<void>;
   gallery: IGalleryData | null;
 }
 

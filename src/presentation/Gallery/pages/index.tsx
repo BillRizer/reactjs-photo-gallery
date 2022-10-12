@@ -7,8 +7,19 @@ import { useDataFromPexels } from "../hooks/data-from-pexels";
 import IconGrid from "../../../assets/icons/icon-grid.svg";
 import IconMosaic from "../../../assets/icons/icon-mosaic.svg";
 import { Icon } from "../../shared/components/Icon";
-import { PageStyled, Tools, Notifications, Notification } from "./style";
+import { FcKey } from "react-icons/fc";
+
+import {
+  PageStyled,
+  Tools,
+  Notifications,
+  Notification,
+  PexelApiKey,
+} from "./style";
 import { useTranslation } from "react-i18next";
+import { useLoading } from "../../shared/hooks/loading";
+import { useModal } from "../../shared/hooks/modal";
+import { Button } from "../../shared/components/Button";
 
 enum ETypeGallery {
   MOSAIC = "MOSAIC",
@@ -20,24 +31,53 @@ export const GalleryPage = () => {
     ETypeGallery.CUSTOM
   );
   const [searchQuery, setSearchQuery] = useState<string>("");
-  const [pexelsApiKey, setPexelsApiKey] = useState<string>("");
-
+  const [pexelsApiKey, setPexelsApiKey] = useState<string | null>(
+    localStorage.getItem("pexels-api-key")
+  );
+  const [showPexelsInput, setShowPexelsInput] = useState<boolean>(
+    pexelsApiKey ? true : false
+  );
   const { gallery, loadGallery } = useDataFromPexels();
   const { t } = useTranslation();
-
+  const { showLoading, hideLoading } = useLoading();
+  
   function submit() {
-    loadGallery(searchQuery,pexelsApiKey);
+    showLoading();
+    loadGallery(searchQuery, pexelsApiKey || "").finally(() => {
+      hideLoading();
+    });
   }
+
+  function handleSavePexelsApiLocalStorage(key: string) {
+    localStorage.setItem("pexels-api-key", key);
+    setShowPexelsInput(false);
+  }
+  //
   console.log(gallery);
   return (
     <PageStyled className={!gallery ? "full" : ""}>
-      <input type="text" onChange={(e)=>{setPexelsApiKey(e.target.value)}} value={pexelsApiKey} />
+      {showPexelsInput && (
+        <PexelApiKey>
+          {t("pexels_api_key")}
+          <input
+            type="text"
+            onChange={(e) => {
+              setPexelsApiKey(e.target.value);
+            }}
+            value={pexelsApiKey || ""}
+            onBlur={(e) => handleSavePexelsApiLocalStorage(e.target.value)}
+          />
+        </PexelApiKey>
+      )}
       <DividerStyled size="30px"></DividerStyled>
       <SearchBoxComponent
         searchQuery={searchQuery}
         setSearchQuery={setSearchQuery}
         submit={submit}
       ></SearchBoxComponent>
+ <DividerStyled size="10px"></DividerStyled>
+      <Button size="small" Icon={<FcKey/>} theme="only-text" label="Change Pexels api key" onClick={() => setShowPexelsInput(!showPexelsInput)}></Button>
+     
       {gallery && (
         <Tools>
           <Icon
@@ -57,7 +97,7 @@ export const GalleryPage = () => {
       {gallery?.source === "mock" && (
         //TODO: create component for this (ToastNotifications)
         // !!!Dont use this in input data!!!
-        <Notifications >
+        <Notifications>
           <Notification
             dangerouslySetInnerHTML={{
               __html: t("common.pexels_apikey_wrong", {

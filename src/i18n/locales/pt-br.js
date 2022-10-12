@@ -18,7 +18,9 @@ const tra= {
     },
     common:{
       pexels_apikey_wrong:"Sua <b>chave de api PEXELS está errada</b>, Mas busquei estes tomates estáticos para você"
-    }
+    },
+    pexels_api_key:'Chave de api Pexels',
+    loading:"Carregando"
   },
 };
 export default tra

@@ -17,10 +17,23 @@ export const Brand = styled.div`
     border-radius: 50%;
     padding: 22px;
     position: relative;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
   }
+  
   .icon img{
     width: 84px;
+    height: 84px;
+    background: #000;
     border-radius: 100%;
+  }
+  .message{
+    background: #000;
+    padding: 10px;
+    color: #fff;
+    border-radius: 10px;
+    border: 5px solid #8888;
   }
   @keyframes spinning {
     from { transform: rotate(0deg) }
@@ -72,8 +85,8 @@ export const Background = styled.div`
 
 &::after{
     content: '';
-    background: #000;
-    opacity: 0.5;
+    background:${(props) => props.theme.components.loading.bg};
+    opacity: 0.9;
     width: 100%;
     height: 100%;
     position: absolute;

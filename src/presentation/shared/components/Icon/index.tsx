@@ -4,7 +4,7 @@ import {IconStyled} from './style';
 interface Props {
   icon:any,
   size:"small"|"medium"|"large",
-  onClick:any,
+  onClick?:any,
   cursorPointer?:boolean,
 }
 
