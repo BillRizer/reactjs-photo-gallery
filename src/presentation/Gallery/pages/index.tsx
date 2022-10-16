@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useCallback, useEffect, useState } from "react";
 import { GalleryListCustom } from "../components/GalleryListCustom";
 import { GalleryListMosaic } from "../components/GalleryListPexels";
 import { SearchBoxComponent } from "../components/SearchBox";
@@ -36,29 +36,44 @@ export const GalleryPage = () => {
   );
   const [showPexelsInput, setShowPexelsInput] = useState<boolean>(false);
   const { gallery, loadGallery } = useDataFromPexels();
+  const [perPage, setPerPage] = useState<number>(15);
+  const [page, setPage] = useState<number>(1);
+
   const { t } = useTranslation();
   const { showLoading, hideLoading } = useLoading();
   
-  function submit() {
-    
-    showLoading();
-    loadGallery(searchQuery, pexelsApiKey || "",0).finally(() => {
+  const loadGalleryData = useCallback(
+    () => {
+      showLoading();
+    loadGallery(searchQuery, pexelsApiKey || "",page,perPage).finally(() => {
       hideLoading();
     });
-  }
-
-  const handleLoadGallery = (page:number) => {
-    showLoading();
-    loadGallery(searchQuery, pexelsApiKey || "",page).finally(() => {
-      hideLoading();
-    });
-  }
+    },
+    [page,perPage],
+  )
 
   function handleSavePexelsApiLocalStorage(key: string) {
     localStorage.setItem("pexels-api-key", key);
     setShowPexelsInput(false);
   }
  
+  useEffect(() => {
+    loadGalleryData() 
+  }, [page])
+  
+  // function  handleSelectPage  (pageNumber:number): void {
+    
+    
+  //   setPage(pageNumber)
+  //   console.log('page',page);
+  //   setTimeout(() => {
+  //     console.log('page',page);
+  //     console.log('handleSelectPage',pageNumber);
+  //     loadGalleryData()  
+  //   }, 4000);
+    
+  // }
+  
   return (
     <PageStyled className={!gallery ? "full" : ""}>
       {showPexelsInput && (
@@ -78,7 +93,7 @@ export const GalleryPage = () => {
       <SearchBoxComponent
         searchQuery={searchQuery}
         setSearchQuery={setSearchQuery}
-        submit={submit}
+        submit={loadGalleryData}
       ></SearchBoxComponent>
  <DividerStyled size="10px"></DividerStyled>
       <Button size="small" icon={FcKey} theme="only-text" label="Change Pexels api key" onClick={() => setShowPexelsInput(!showPexelsInput)}></Button>
@@ -113,8 +128,15 @@ export const GalleryPage = () => {
         </Notifications>
       )}
       {gallery&&(
-        <PaginationComponent amount={gallery.total_results}  setPageNumber={(page:number)=>{handleLoadGallery(page);
-        }} perPage={2} />
+        <>
+        <PaginationComponent amount={gallery.total_results}  setPageNumber={setPage} perPage={perPage} />
+        <select name="" id="" onChange={(e)=>setPerPage(+e.target.value)}>
+          <option value="15">15</option>
+          <option value="30">30</option>
+          <option value="50">50</option>
+        </select>
+        </>
+        
       )}
       <DividerStyled size="30px"></DividerStyled>
       {typeGallery === ETypeGallery.MOSAIC && gallery && (
@@ -128,3 +150,4 @@ export const GalleryPage = () => {
     </PageStyled>
   );
 };
+

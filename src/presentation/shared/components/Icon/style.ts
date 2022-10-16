@@ -3,7 +3,6 @@ interface Props{
     cursorPointer:boolean;
 }
 export const IconStyled = styled.div<Props>`
-
     &.small{
         width: 18px;
         height: 18px;
@@ -20,10 +19,8 @@ export const IconStyled = styled.div<Props>`
         font-size: 36px;
     }
     ${(props) => props.cursorPointer ? `cursor:pointer;`:''}
-
     &.disabled {
     cursor: not-allowed!important;
     opacity: 0.8;
-    
   }
 `

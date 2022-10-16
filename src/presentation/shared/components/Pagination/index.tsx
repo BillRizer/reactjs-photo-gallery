@@ -34,6 +34,7 @@ export const PaginationComponent = ({
   );
 
   useEffect(() => {
+    setInnerCurrentPage(innerCurrentPage>totalPages?totalPages:innerCurrentPage)
     const range = 2;
     const indexStart =
       (innerCurrentPage-1) - range <= 0 ? 0 : (innerCurrentPage-1) - range;
@@ -42,7 +43,7 @@ export const PaginationComponent = ({
     setMinimalArrayPages(
       totalPagesArr.slice(indexStart, indexEnd)
     );
-  }, [innerCurrentPage]);
+  }, [innerCurrentPage,perPage]);
 
 
   const PropsDefault = {
@@ -54,6 +55,11 @@ export const PaginationComponent = ({
     setPageNumber(pageNumber);
     setInnerCurrentPage(pageNumber);
   };
+
+  const handleLastPage = () => {
+      setInnerCurrentPage(totalPages);
+      setPageNumber(totalPages);
+  };
   const handleNextPage = () => {
     if (innerCurrentPage < totalPages) {
       const next: number = innerCurrentPage + 1;
@@ -61,12 +67,18 @@ export const PaginationComponent = ({
       setPageNumber(next);
     }
   };
+
   const handlePrevPage = () => {
-    if (innerCurrentPage > 0) {
+    if (innerCurrentPage > 1) {
       const prev: number = innerCurrentPage - 1;
       setInnerCurrentPage(prev);
       setPageNumber(prev);
     }
+  };
+  const handleFirstPage = () => {
+      setInnerCurrentPage(1);
+      setPageNumber(1);
+    
   };
   return (
     <ContainerStyled>
@@ -77,7 +89,7 @@ export const PaginationComponent = ({
           icon={FiChevronsLeft}
           disabled={innerCurrentPage === 1}
           onClick={() => {
-            setInnerCurrentPage(1);
+            handleFirstPage()
           }}
         ></Button>
         <Button
@@ -114,7 +126,7 @@ export const PaginationComponent = ({
           icon={FiChevronsRight}
           disabled={innerCurrentPage === totalPages}
           onClick={() => {
-            setInnerCurrentPage(totalPages);
+            handleLastPage()
           }}
         />
       </>
