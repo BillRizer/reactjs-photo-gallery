@@ -1,17 +1,6 @@
 import styled from "styled-components";
 
 export const ButtonStyled = styled.button`
-  /* font-size: ${(props) => props.theme.fonts.md};
-  height: 49px;
-  padding: 0;
-  margin: 0;
-  padding-right: 25px;
-  padding-left: 25px;
-  border-radius: 8px;
-  display: initial;
-  cursor: pointer;
-  transition: 0.5s;
-  border:1px solid transparent; */
   border:1px solid #000;
   border-radius: 4px;
   display: flex;
@@ -55,9 +44,7 @@ export const ButtonStyled = styled.button`
   &:disabled,&:disabled .icon {
     cursor: not-allowed;
     opacity: 0.8;
-    
   }
-
   &.only-text{
     background: transparent;
     border-color: transparent;

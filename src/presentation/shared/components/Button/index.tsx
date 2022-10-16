@@ -9,7 +9,7 @@ interface ButtonProps {
   icon?: any;
   label: string;
   disabled?: boolean;
-  onClick?: () => void;
+  onClick?: any;
 }
 
 export const Button = ({
@@ -19,6 +19,7 @@ export const Button = ({
   backgroundColor,
   label,
   disabled,
+  onClick,
   ...props
 }: ButtonProps) => {
   return (
@@ -27,6 +28,7 @@ export const Button = ({
       className={`${theme || ""} ${size || ""}`}
       disabled={disabled}
       style={{ backgroundColor }}
+      onClick={onClick}
       {...props}
     >
       <>
