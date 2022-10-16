@@ -1,4 +1,4 @@
-import React, { useState, useCallback, useEffect, useRef } from 'react';
+import React from 'react';
 
 import {
     Background,
@@ -15,11 +15,11 @@ const LoadingComponent: React.FC<IProps> = ({isActive}) => {
     const {t} = useTranslation()
     return <>
     {(isActive&&(
-        <Background>
-                <Brand>
+        <Background data-testid="loading-bg">
+                <Brand data-testid="loading-brand">
                     <span className="content">
                         <span className="icon">
-                            <img src={logo} />
+                            <img src={logo} alt="loading"/>
                             <div className='message'>{t('loading')}</div>
                         </span>
                         <span className="spin"></span>

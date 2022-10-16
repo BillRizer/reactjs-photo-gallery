@@ -9,6 +9,6 @@ interface Props {
 
 export const Input = ({placeholder,type,value,onChange,...props}:Props) => {
   return (
-    <InputStyled placeholder={placeholder} type={type} value={value} onChange={onChange} {...props} />
+    <InputStyled data-testid='input' placeholder={placeholder} type={type} value={value} onChange={onChange} {...props} />
   );
 };

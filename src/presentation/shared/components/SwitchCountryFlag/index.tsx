@@ -3,7 +3,9 @@ import { useTranslation } from "react-i18next";
 import { Container, Flag } from "./style";
 import IconFlagUS from '../../../../assets/icons/icon-flag-us.svg'
 import IconFlagBR from '../../../../assets/icons/icon-flag-br.svg'
+
 interface Props {}
+
 export const SwitchCountryFlag = ({ ...props }: Props) => {
   const { i18n } = useTranslation();
   const selectedLng = i18n.language 
@@ -15,8 +17,8 @@ export const SwitchCountryFlag = ({ ...props }: Props) => {
   
   return (
     <Container>
-      <Flag onClick={() => handle("pt-BR")} src={IconFlagBR} className={selectedLng==='pt-BR'?'actived':''}></Flag>
-      <Flag onClick={() => handle("en-US")} src={IconFlagUS} className={selectedLng==='en-US'?'actived':''}></Flag>
+      <Flag data-testid="pt-BR" onClick={() => handle("pt-BR")} src={IconFlagBR} className={selectedLng==='pt-BR'?'actived':''}></Flag>
+      <Flag data-testid="en-US" onClick={() => handle("en-US")} src={IconFlagUS} className={selectedLng==='en-US'?'actived':''}></Flag>
     </Container>
   );
 };

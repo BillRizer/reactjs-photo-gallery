@@ -19,7 +19,7 @@ export const ButtonStyled = styled.button`
   align-items: center;
 
   & .icon{
-    margin-right:10px;
+    margin-right:10px;  
   }
   &.large{
     padding: 11px 20px;

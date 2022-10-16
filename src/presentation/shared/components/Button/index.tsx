@@ -1,12 +1,12 @@
 import React from "react";
-import { IconType } from "react-icons";
 import { ButtonStyled } from "./style";
+import { IconComponent } from "../Icon";
 
 interface ButtonProps {
   backgroundColor?: string;
   size?: "small" | "medium" | "large";
   theme?: "only-text"|"default"|"primary";
-  Icon?: any;
+  icon?: any;
   label: string;
   disabled?: boolean;
   onClick?: () => void;
@@ -15,14 +15,13 @@ interface ButtonProps {
 export const Button = ({
   size = "medium",
   theme,
-  Icon,
+  icon,
   backgroundColor,
   label,
   disabled,
   ...props
 }: ButtonProps) => {
   return (
-    //['storybook-button', `storybook-button--${size}`, mode].join(' ')
     <ButtonStyled
       type="button"
       className={`${theme || ""} ${size || ""}`}
@@ -31,8 +30,7 @@ export const Button = ({
       {...props}
     >
       <>
-      {Icon&&(<div className="icon">{Icon}</div>)}
-        
+      {icon&&(<IconComponent size={size} data-testid="icon" Icon={icon}></IconComponent>)}
         {label}
       </>
     </ButtonStyled>
