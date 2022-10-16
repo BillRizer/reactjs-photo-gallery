@@ -4,7 +4,6 @@ import { ISearch } from "../dtos/get-search.dto";
 
 export const SearchDtoToGalleryDataMapper = (search: ISearch): IGalleryData => {
   const { page, per_page, photos,source } = search;
-  console.log("source",source);
   
   const data: IGalleryData = {
     source:source?source:'api',

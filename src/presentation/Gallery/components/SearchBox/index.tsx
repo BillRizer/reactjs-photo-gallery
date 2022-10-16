@@ -3,13 +3,11 @@ import { useTranslation } from "react-i18next";
 
 // TODO: fix this, path not working imporing e.g. 'src/assets ...'
 import logoBrand from "../../../../assets/img/brand.png";
-import IconSearch from "../../../../assets/icons/icon-search.svg";
 import { DividerStyled } from "../../../shared/components-styled/divider";
 import { Button } from "../../../shared/components/Button";
 import { Input } from "../../../shared/components/Input";
 import { Brand, Container } from "./style";
 import { FcSearch } from "react-icons/fc";
-import { Icon } from "../../../shared/components/Icon";
 import { GroupedStyled } from "../../../shared/components-styled/grouped";
 
 interface Props {
@@ -46,7 +44,7 @@ export const SearchBoxComponent = ({
           }}
         />
         <Button
-        Icon={<FcSearch/>}
+        icon={FcSearch}
           data-testid="submit"
           onClick={handleSubmit}
           size="large"

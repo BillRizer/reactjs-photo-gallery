@@ -1,6 +1,3 @@
-// schema que utilizarei no meu app
-// nao é o mesmo que vem da api
-
 interface IPhoto {
   id: number;
   url: string;

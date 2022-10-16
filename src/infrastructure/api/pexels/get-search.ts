@@ -45,7 +45,6 @@ export class getSearch {
   
   public async get(query: string,pexelsApiKey:string){
     let searcedData:ISearch|null = await this.request.getSearch(query,pexelsApiKey)
-    console.log('searcedData', searcedData);
     if(!searcedData){return null}
 
     return SearchDtoToGalleryDataMapper(searcedData);

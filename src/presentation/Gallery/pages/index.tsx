@@ -6,7 +6,7 @@ import { DividerStyled } from "../../shared/components-styled/divider";
 import { useDataFromPexels } from "../hooks/data-from-pexels";
 import IconGrid from "../../../assets/icons/icon-grid.svg";
 import IconMosaic from "../../../assets/icons/icon-mosaic.svg";
-import { Icon } from "../../shared/components/Icon";
+import { IconComponent } from "../../shared/components/Icon";
 import { FcKey } from "react-icons/fc";
 
 import {
@@ -18,8 +18,8 @@ import {
 } from "./style";
 import { useTranslation } from "react-i18next";
 import { useLoading } from "../../shared/hooks/loading";
-import { useModal } from "../../shared/hooks/modal";
 import { Button } from "../../shared/components/Button";
+import { Pagination } from "../../shared/components/Pagination";
 
 enum ETypeGallery {
   MOSAIC = "MOSAIC",
@@ -34,14 +34,13 @@ export const GalleryPage = () => {
   const [pexelsApiKey, setPexelsApiKey] = useState<string | null>(
     localStorage.getItem("pexels-api-key")
   );
-  const [showPexelsInput, setShowPexelsInput] = useState<boolean>(
-    pexelsApiKey ? true : false
-  );
+  const [showPexelsInput, setShowPexelsInput] = useState<boolean>(false);
   const { gallery, loadGallery } = useDataFromPexels();
   const { t } = useTranslation();
   const { showLoading, hideLoading } = useLoading();
   
   function submit() {
+    
     showLoading();
     loadGallery(searchQuery, pexelsApiKey || "").finally(() => {
       hideLoading();
@@ -52,8 +51,7 @@ export const GalleryPage = () => {
     localStorage.setItem("pexels-api-key", key);
     setShowPexelsInput(false);
   }
-  //
-  console.log(gallery);
+ 
   return (
     <PageStyled className={!gallery ? "full" : ""}>
       {showPexelsInput && (
@@ -76,14 +74,14 @@ export const GalleryPage = () => {
         submit={submit}
       ></SearchBoxComponent>
  <DividerStyled size="10px"></DividerStyled>
-      <Button size="small" Icon={<FcKey/>} theme="only-text" label="Change Pexels api key" onClick={() => setShowPexelsInput(!showPexelsInput)}></Button>
+      <Button size="small" icon={FcKey} theme="only-text" label="Change Pexels api key" onClick={() => setShowPexelsInput(!showPexelsInput)}></Button>
      
       {gallery && (
         <Tools>
-          <Icon
+          <IconComponent
             size="medium"
             cursorPointer={true}
-            icon={typeGallery === ETypeGallery.MOSAIC ? IconGrid : IconMosaic}
+            Icon={typeGallery === ETypeGallery.MOSAIC ? IconGrid : IconMosaic}
             onClick={() =>
               setTypeGallery(
                 typeGallery === ETypeGallery.MOSAIC
@@ -91,12 +89,13 @@ export const GalleryPage = () => {
                   : ETypeGallery.MOSAIC
               )
             }
-          ></Icon>
+          ></IconComponent>
         </Tools>
       )}
+      <Pagination></Pagination>
       {gallery?.source === "mock" && (
         //TODO: create component for this (ToastNotifications)
-        // !!!Dont use this in input data!!!
+        // !!!Dont use dangerouslySetInnerHTML this in input data!!!
         <Notifications>
           <Notification
             dangerouslySetInnerHTML={{
@@ -114,6 +113,8 @@ export const GalleryPage = () => {
       {typeGallery === ETypeGallery.CUSTOM && gallery && (
         <GalleryListCustom data={gallery} />
       )}
+      
+
     </PageStyled>
   );
 };

@@ -17,7 +17,6 @@ export const Provider = ({ children }: Props) => {
   const loadGallery = useCallback(
     async (query: string, pexelsApiKey: string) => {
       const data = await getSearchPexels(query,pexelsApiKey);
-      console.log("loading gallery", data);
       setData(data);
     },
     []
