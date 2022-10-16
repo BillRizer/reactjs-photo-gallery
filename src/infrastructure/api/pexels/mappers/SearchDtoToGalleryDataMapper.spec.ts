@@ -12,6 +12,8 @@ const mock: ISearch = {
   source: "mock",
   page: 1,
   per_page: 15,
+  next_page:1,
+  total_results:100,
   photos: [
     {
       id: 15286,
@@ -76,6 +78,8 @@ const mock: ISearch = {
 const mockParsed={
      "page": 1,
      "per_page": 15,
+     "next_page":1,
+     "total_results":100,
      "photos":  [
        {
          "alt": "Person Walking Between Green Forest Trees",

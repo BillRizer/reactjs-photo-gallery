@@ -26,4 +26,6 @@ export interface ISearch {
   page: number;
   per_page: number;
   photos: Array<IPhoto>;
+  total_results:number;
+  next_page:number
 }

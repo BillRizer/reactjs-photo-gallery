@@ -6,6 +6,8 @@ const mockISearch: ISearch = {
   source: "mock",
   page: 1,
   per_page: 15,
+  next_page:1,
+  total_results:100,
   photos: [
     {
       id: 15286,
@@ -69,6 +71,8 @@ const mockISearch: ISearch = {
 const mockIGalleryData = {
   page: 1,
   per_page: 15,
+  next_page:1,
+  total_results:100,
   photos: [
     {
       alt: "Person Walking Between Green Forest Trees",

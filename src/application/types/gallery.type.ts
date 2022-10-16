@@ -12,4 +12,6 @@ export interface IGalleryData {
   page: number;
   per_page: number;
   photos: Array<IPhoto>;
+  next_page:number
+  total_results:number
 }
