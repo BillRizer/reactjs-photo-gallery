@@ -44,9 +44,6 @@ export const PaginationComponent = ({
     );
   }, [innerCurrentPage]);
 
-  console.log("innerCurrentPage", innerCurrentPage);
-  console.log("totalPagess", totalPagesArr);
-  console.log("minimalArrayPages", minimalArrayPages);
 
   const PropsDefault = {
     theme: "default" as "default",
