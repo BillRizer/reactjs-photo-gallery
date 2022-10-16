@@ -20,7 +20,9 @@ const tra = {
         pexels_apikey_wrong:"Your <b>PEXELS api key is wrong</b>, But I looked up these static tomatoes for you"
       },
       pexels_api_key:'Pexels API key',
-      loading:"Loading"
+      loading:"Loading",
+      use_dark_theme:"Dark Theme",
+      use_light_theme:"Light Theme"
     },
   };
   export default tra
