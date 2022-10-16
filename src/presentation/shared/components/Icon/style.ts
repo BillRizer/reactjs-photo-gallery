@@ -21,4 +21,9 @@ export const IconStyled = styled.div<Props>`
     }
     ${(props) => props.cursorPointer ? `cursor:pointer;`:''}
 
+    &.disabled {
+    cursor: not-allowed!important;
+    opacity: 0.8;
+    
+  }
 `

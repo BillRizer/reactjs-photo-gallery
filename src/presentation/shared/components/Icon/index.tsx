@@ -6,6 +6,7 @@ interface Props {
   size: "small" | "medium" | "large";
   onClick?: any;
   cursorPointer?: boolean;
+  disabled?: boolean;
 }
 
 export const IconComponent = ({
@@ -13,10 +14,11 @@ export const IconComponent = ({
   size,
   onClick,
   cursorPointer,
+  disabled,
   ...props
 }: Props) => {
   return (
-    <IconStyled data-testid='icon' cursorPointer onClick={onClick} className={size}>
+    <IconStyled data-testid='icon' cursorPointer onClick={onClick} className={`${disabled&&('disabled')} ${size}`}>
       {typeof Icon === "string" ?(
         <img src={Icon} alt="" />
       ):(

@@ -30,7 +30,7 @@ export const Button = ({
       {...props}
     >
       <>
-      {icon&&(<IconComponent size={size} data-testid="icon" Icon={icon}></IconComponent>)}
+      {icon&&(<IconComponent disabled={disabled} size={size} data-testid="icon" Icon={icon}></IconComponent>)}
         {label}
       </>
     </ButtonStyled>
