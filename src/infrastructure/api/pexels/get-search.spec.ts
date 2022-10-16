@@ -115,7 +115,7 @@ export class mockedRequest implements IRequest {
 describe("infra - get-Search", () => {
   test("should parse data", async () => {
     const fromApi = new getSearch(new mockedRequest());
-    const dataApi = await fromApi.get("query", "pexelsApiKey");
+    const dataApi = await fromApi.get("query", "pexelsApiKey",0);
 
     expect(dataApi).toBeDefined();
     expect(dataApi).toEqual(mockIGalleryData)

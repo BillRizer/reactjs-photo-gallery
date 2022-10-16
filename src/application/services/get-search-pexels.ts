@@ -7,13 +7,14 @@ import { IGalleryData } from "../types/gallery.type";
 
 export const getSearchPexels = async (
   query: string,
-  pexelsApiKey: string
+  pexelsApiKey: string,
+  page:number
 ): Promise<IGalleryData | null> => {
   
   const fromApi = new getSearch(new getFromApi());
-  const dataApi = await fromApi.get(query, pexelsApiKey);
+  const dataApi = await fromApi.get(query, pexelsApiKey,page);
   if(dataApi){return dataApi}
 
   const fromMock = new getSearch(new getFromMock());
-  return await fromMock.get(query, pexelsApiKey);
+  return await fromMock.get(query, pexelsApiKey,page);
 };

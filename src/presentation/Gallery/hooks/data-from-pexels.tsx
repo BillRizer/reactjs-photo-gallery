@@ -3,7 +3,7 @@ import { getSearchPexels } from "../../../application/services/get-search-pexels
 import { IGalleryData } from "../../../application/types/gallery.type";
 
 interface IContextData {
-  loadGallery(query: string, pexelsApiKey: string): Promise<void>;
+  loadGallery(query: string, pexelsApiKey: string,page:number): Promise<void>;
   gallery: IGalleryData | null;
 }
 
@@ -15,8 +15,8 @@ export const Provider = ({ children }: Props) => {
   const [data, setData] = useState<IGalleryData | null>(null);
 
   const loadGallery = useCallback(
-    async (query: string, pexelsApiKey: string) => {
-      const data = await getSearchPexels(query,pexelsApiKey);
+    async (query: string, pexelsApiKey: string,page:number) => {
+      const data = await getSearchPexels(query,pexelsApiKey,page);
       setData(data);
     },
     []

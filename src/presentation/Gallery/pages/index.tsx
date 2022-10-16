@@ -19,7 +19,7 @@ import {
 import { useTranslation } from "react-i18next";
 import { useLoading } from "../../shared/hooks/loading";
 import { Button } from "../../shared/components/Button";
-import { Pagination } from "../../shared/components/Pagination";
+import { PaginationComponent } from "../../shared/components/Pagination";
 
 enum ETypeGallery {
   MOSAIC = "MOSAIC",
@@ -42,7 +42,14 @@ export const GalleryPage = () => {
   function submit() {
     
     showLoading();
-    loadGallery(searchQuery, pexelsApiKey || "").finally(() => {
+    loadGallery(searchQuery, pexelsApiKey || "",0).finally(() => {
+      hideLoading();
+    });
+  }
+
+  const handleLoadGallery = (page:number) => {
+    showLoading();
+    loadGallery(searchQuery, pexelsApiKey || "",page).finally(() => {
       hideLoading();
     });
   }
@@ -92,7 +99,6 @@ export const GalleryPage = () => {
           ></IconComponent>
         </Tools>
       )}
-      <Pagination></Pagination>
       {gallery?.source === "mock" && (
         //TODO: create component for this (ToastNotifications)
         // !!!Dont use dangerouslySetInnerHTML this in input data!!!
@@ -105,6 +111,10 @@ export const GalleryPage = () => {
             }}
           />
         </Notifications>
+      )}
+      {gallery&&(
+        <PaginationComponent amount={gallery.total_results}  setPageNumber={(page:number)=>{handleLoadGallery(page);
+        }} perPage={2} />
       )}
       <DividerStyled size="30px"></DividerStyled>
       {typeGallery === ETypeGallery.MOSAIC && gallery && (
