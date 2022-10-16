@@ -107,4 +107,5 @@ describe("pagination Component", () => {
     expect(currentPage).toHaveClass("primary")
     expect(mock).toHaveBeenCalledWith(3)
   })
+  
 });
