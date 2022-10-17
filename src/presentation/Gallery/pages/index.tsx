@@ -8,7 +8,7 @@ import IconGrid from "../../../assets/icons/icon-grid.svg";
 import IconMosaic from "../../../assets/icons/icon-mosaic.svg";
 import { IconComponent } from "../../shared/components/Icon";
 import { FcKey } from "react-icons/fc";
-
+import { HashLink } from "react-router-hash-link";
 import {
   PageStyled,
   Tools,
@@ -20,6 +20,8 @@ import { useTranslation } from "react-i18next";
 import { useLoading } from "../../shared/hooks/loading";
 import { Button } from "../../shared/components/Button";
 import { PaginationComponent } from "../../shared/components/Pagination";
+import { GroupedStyled } from "../../shared/components-styled/grouped";
+import { Link } from "react-router-dom";
 
 enum ETypeGallery {
   MOSAIC = "MOSAIC",
@@ -41,41 +43,47 @@ export const GalleryPage = () => {
 
   const { t } = useTranslation();
   const { showLoading, hideLoading } = useLoading();
-  
-  const loadGalleryData = useCallback(
-    () => {
-      showLoading();
-    loadGallery(searchQuery, pexelsApiKey || "",page,perPage).finally(() => {
+
+  const loadGalleryData = () => {
+    showLoading();
+    loadGallery(searchQuery, pexelsApiKey || "", page, perPage).finally(() => {
       hideLoading();
     });
-    },
-    [page,perPage],
-  )
+  };
 
   function handleSavePexelsApiLocalStorage(key: string) {
     localStorage.setItem("pexels-api-key", key);
     setShowPexelsInput(false);
   }
- 
+
   useEffect(() => {
-    loadGalleryData() 
-  }, [page])
-  
-  // function  handleSelectPage  (pageNumber:number): void {
-    
-    
-  //   setPage(pageNumber)
-  //   console.log('page',page);
-  //   setTimeout(() => {
-  //     console.log('page',page);
-  //     console.log('handleSelectPage',pageNumber);
-  //     loadGalleryData()  
-  //   }, 4000);
-    
-  // }
-  
+    if (searchQuery == "") {
+      return;
+    }
+    loadGalleryData();
+  }, [page]);
+
+  function ContainerPagination() {
+    return gallery ? (
+      <>
+        <PaginationComponent
+          amount={gallery.total_results}
+          setPageNumber={setPage}
+          perPage={perPage}
+        />
+        <select name="" id="" onChange={(e) => setPerPage(+e.target.value)}>
+          <option value="15">15</option>
+          <option value="30">30</option>
+          <option value="50">50</option>
+        </select>
+      </>
+    ) : (
+      <></>
+    );
+  }
+
   return (
-    <PageStyled className={!gallery ? "full" : ""}>
+    <PageStyled className={!gallery ? "full" : ""} id="#top">
       {showPexelsInput && (
         <PexelApiKey>
           {t("pexels_api_key")}
@@ -95,24 +103,35 @@ export const GalleryPage = () => {
         setSearchQuery={setSearchQuery}
         submit={loadGalleryData}
       ></SearchBoxComponent>
- <DividerStyled size="10px"></DividerStyled>
-      <Button size="small" icon={FcKey} theme="only-text" label="Change Pexels api key" onClick={() => setShowPexelsInput(!showPexelsInput)}></Button>
-     
+      <DividerStyled size="10px"></DividerStyled>
+      <Button
+        size="small"
+        icon={FcKey}
+        theme="only-text"
+        label={t("gallery.change_pexels_api_key")}
+        onClick={() => setShowPexelsInput(!showPexelsInput)}
+      ></Button>
+
       {gallery && (
-        <Tools>
-          <IconComponent
-            size="medium"
-            cursorPointer={true}
-            Icon={typeGallery === ETypeGallery.MOSAIC ? IconGrid : IconMosaic}
-            onClick={() =>
-              setTypeGallery(
-                typeGallery === ETypeGallery.MOSAIC
-                  ? ETypeGallery.CUSTOM
-                  : ETypeGallery.MOSAIC
-              )
-            }
-          ></IconComponent>
-        </Tools>
+        <>
+          <DividerStyled size="40px"></DividerStyled>
+
+          <Tools>
+            {ContainerPagination()}
+            <IconComponent
+              size="medium"
+              cursorPointer={true}
+              Icon={typeGallery === ETypeGallery.MOSAIC ? IconGrid : IconMosaic}
+              onClick={() =>
+                setTypeGallery(
+                  typeGallery === ETypeGallery.MOSAIC
+                    ? ETypeGallery.CUSTOM
+                    : ETypeGallery.MOSAIC
+                )
+              }
+            ></IconComponent>
+          </Tools>
+        </>
       )}
       {gallery?.source === "mock" && (
         //TODO: create component for this (ToastNotifications)
@@ -127,17 +146,7 @@ export const GalleryPage = () => {
           />
         </Notifications>
       )}
-      {gallery&&(
-        <>
-        <PaginationComponent amount={gallery.total_results}  setPageNumber={setPage} perPage={perPage} />
-        <select name="" id="" onChange={(e)=>setPerPage(+e.target.value)}>
-          <option value="15">15</option>
-          <option value="30">30</option>
-          <option value="50">50</option>
-        </select>
-        </>
-        
-      )}
+
       <DividerStyled size="30px"></DividerStyled>
       {typeGallery === ETypeGallery.MOSAIC && gallery && (
         <GalleryListMosaic data={gallery} />
@@ -145,9 +154,15 @@ export const GalleryPage = () => {
       {typeGallery === ETypeGallery.CUSTOM && gallery && (
         <GalleryListCustom data={gallery} />
       )}
-      
-
+      {gallery && (
+        <>
+          <DividerStyled size="40px"></DividerStyled>
+          <Tools>
+            {ContainerPagination()}
+            <HashLink to={"#top"}>{t("back_to_top")}</HashLink>
+          </Tools>
+        </>
+      )}
     </PageStyled>
   );
 };
-

@@ -2,6 +2,7 @@ const tra = {
     translations: {
       gallery: {
         greetings: "Welcome",
+        change_pexels_api_key:"Change Pexels api key"
       },
       menu:{
         home:"Home",
@@ -12,6 +13,9 @@ const tra = {
         notfound:"Page not found",
         buy_coffe:"Buy me a coffee and I will create this page for you"
       },
+      aboutpage:{
+        title:"About page",
+      },
       notallowed:{
         notallowed:"Page not allowed",
         buy_coffe:"Buy me a coffee"
@@ -21,6 +25,9 @@ const tra = {
       },
       pexels_api_key:'Pexels API key',
       loading:"Loading",
+      change_language_to_portuguese:'Change language to portuguese',
+      change_language_to_english:'Change language to english',
+      back_to_top:"Back to Top",
       use_dark_theme:"Dark Theme",
       use_light_theme:"Light Theme"
     },

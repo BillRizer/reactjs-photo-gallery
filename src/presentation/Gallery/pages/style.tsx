@@ -12,11 +12,19 @@ export const PageStyled = styled.div`
   }
 `;
 export const Tools = styled.div`
+  background: #f1f1f1;
+  padding: 10px;
   display: flex;
-  justify-content: right;
+  align-items: center;
+  justify-content: center;
   width: 100%;
-  padding: 0 27px;
   box-sizing: border-box;
+  >div,>select {
+    margin-right: 25px
+  }
+  *{
+    margin-right: 5px
+  }
 `;
 
 export const Notifications = styled.div`
