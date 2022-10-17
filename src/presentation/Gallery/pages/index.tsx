@@ -6,6 +6,7 @@ import { DividerStyled } from "../../shared/components-styled/divider";
 import { useDataFromPexels } from "../hooks/data-from-pexels";
 import IconGrid from "../../../assets/icons/icon-grid.svg";
 import IconMosaic from "../../../assets/icons/icon-mosaic.svg";
+import IconTomato from "../../../assets/icons/icon-tomato.svg";
 import { IconComponent } from "../../shared/components/Icon";
 import { FcKey } from "react-icons/fc";
 import { HashLink } from "react-router-hash-link";
@@ -42,8 +43,13 @@ export const GalleryPage = () => {
     showLoading();
     loadGallery(searchQuery, pexelsApiKey || "", page, perPage).finally(() => {
       hideLoading();
+      
     });
   };
+
+  useEffect(() => {
+    gallery?.source === "mock" && MockedMessageModal()
+  }, [gallery]);
 
   useEffect(() => {
     if (searchQuery == "") {
@@ -75,7 +81,7 @@ export const GalleryPage = () => {
     localStorage.setItem("pexels-api-key", text);
     setPexelsApiKey(text);
   }
-  
+
   const PexelsApiKeyComp = () => (
     <>
       <Input
@@ -102,6 +108,18 @@ export const GalleryPage = () => {
     });
   };
 
+  const MockedMessageModal = () => {
+    showModal({
+      header: {
+        title: t("pexels_api_key"),
+        icon: IconTomato,
+        description: t("common.pexels_apikey_wrong"),
+      },
+      disclaimer: t("common.pexels_apikey_wrong_disclaimer"),
+    });
+  };
+ 
+  
   return (
     <PageStyled className={!gallery ? "full" : ""} id="#top">
       <DividerStyled size="30px"></DividerStyled>
@@ -140,20 +158,7 @@ export const GalleryPage = () => {
           </Tools>
         </>
       )}
-      {gallery?.source === "mock" && (
-        //TODO: create component for this (ToastNotifications)
-        // !!!Dont use dangerouslySetInnerHTML this in input data!!!
-        <Notifications>
-          <Notification
-            dangerouslySetInnerHTML={{
-              __html: t("common.pexels_apikey_wrong", {
-                interpolation: { escapeValue: false },
-              }),
-            }}
-          />
-        </Notifications>
-      )}
-
+ 
       <DividerStyled size="30px"></DividerStyled>
       {typeGallery === ETypeGallery.MOSAIC && gallery && (
         <GalleryListMosaic data={gallery} />
