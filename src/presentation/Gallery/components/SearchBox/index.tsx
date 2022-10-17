@@ -35,6 +35,7 @@ export const SearchBoxComponent = ({
       <DividerStyled size="20px"></DividerStyled>
       <GroupedStyled margin={5}>
         <Input
+          id="searchbox" 
           type="text"
           data-testid="input"
           value={searchQuery}
