@@ -24,6 +24,8 @@ const tra= {
       pexels_apikey_wrong:"Sua <b>chave de api PEXELS está errada</b>, Mas busquei estes tomates estáticos para você"
     },
     pexels_api_key:'Chave de api Pexels',
+    pexels_api_desc:'É necessario utilizar a chave de API do pexels para buscar',
+    pexels_api_discl:'Caso nao utilize chave de API, a busca sera feita em um arquivo estatico',
     loading:"Carregando",
     change_language_to_portuguese:'Mudar a língua para português',
     change_language_to_english:'Mudar a língua para inglês',
