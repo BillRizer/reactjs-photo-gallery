@@ -1,14 +1,40 @@
-import React from 'react';
-import {InputStyled} from './style';
+import React from "react";
+import { Container, InputStyled } from "./style";
 interface Props {
-  type?:string,
-  value?:any,
-  placeholder?:string,
-  onChange?:React.ChangeEventHandler<HTMLInputElement>
+  label?: string;
+  id:string;
+  type?: string;
+  value?: any;
+  defaultValue?:any;
+  placeholder?: string;
+  onChange?: React.ChangeEventHandler<HTMLInputElement>;
 }
 
-export const Input = ({placeholder,type,value,onChange,...props}:Props) => {
+export const Input = ({
+  label,
+  id,
+  placeholder,
+  type,
+  value,
+  defaultValue,
+  onChange,
+  ...props
+}: Props) => {
   return (
-    <InputStyled data-testid='input' placeholder={placeholder} type={type} value={value} onChange={onChange} {...props} />
+    <Container>
+      <label htmlFor={id}>{label}</label>
+
+      <InputStyled
+        id={id}
+        name={id}
+        data-testid="input"
+        placeholder={placeholder}
+        type={type}
+        value={value}
+        defaultValue={defaultValue}
+        onChange={onChange}
+        {...props}
+      />
+    </Container>
   );
 };

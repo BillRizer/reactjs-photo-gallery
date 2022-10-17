@@ -11,7 +11,7 @@ import { Input } from "./index";
 describe('Input Shared Component', () => {
 
     test("should render text search in placeholder", () => {
-        render(MountEnv(<Input placeholder="my placeholder"  ></Input>))
+        render(MountEnv(<Input id="a" placeholder="my placeholder"  ></Input>))
     
         const inputNode = screen.getByPlaceholderText(/my placeholder/i);
 
@@ -20,7 +20,7 @@ describe('Input Shared Component', () => {
 
       test("should call change func when typing", () => {
         const mock = jest.fn();
-        render(MountEnv(<Input onChange={mock}  ></Input>))
+        render(MountEnv(<Input id="a" onChange={mock}  ></Input>))
         const inputNode = screen.getByTestId("input");
     
         fireEvent.change(inputNode, { target: { value: "1" } });
