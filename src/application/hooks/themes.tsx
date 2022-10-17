@@ -13,7 +13,7 @@ const ThemeContext = createContext<ThemeContextData>({} as ThemeContextData);
 export const useTheme = () => useContext(ThemeContext);
 
 export const CustomThemeProvider = ({ children }:any) => {
-  const [theme, setTheme] = useState<any>(window.localStorage.getItem("theme")==='dark' ? themeDark : themeLight);
+  const [theme, setTheme] = useState<DefaultTheme>(window.localStorage.getItem("theme")==='dark' ? themeDark : themeLight);
 
   const toggleTheme = useCallback(() => {
     if (theme.name === 'theme-dark'){
