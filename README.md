@@ -1,18 +1,78 @@
 
 # React Photo Gallery
->this project is an interface that accesses the pexels api (pexels.com) and displays the images in a simple way.
-<video src='https://user-images.githubusercontent.com/5104527/195358196-66e07251-44c3-41a4-8448-c6848b1f76ba.mp4' width=180/>
+<div>
+<video src='https://user-images.githubusercontent.com/5104527/196087442-0fcbd7a8-4387-47e5-ba2c-909d1de2f486.webm' width=180 />
 
+</div>
 
-*Install*
+## Getting Started
+
+These instructions will get you a copy of the project up and running on your local machine for development and testing purposes. See deployment for notes on how to deploy the project on a live system.
+
+### Prerequisites
+
+What things you need to install the software
+
 ```
-yarn install
+node, yarn
 ```
-### run
+
+### Installing
+
+A step by step series of examples that tell you how to get a development env running
+
+Say what the step will be
+
 ```
+yarn 
 yarn start
 ```
 
+End with an example of getting some data out of the system or using it for a little demo
+
+## Running the tests
+
+```
+yarn test
+```
+## Running the Storybook [in-progress]
+
+```
+yarn storybook
+```
+
+## Deployment
+
+```
+yarn build
+```
+
+## Built With
+
+- Typescript
+- Reactjs
+- Jest
+- Testing Library
+- Prettier
+- Styled Components
+- Storybook
+- Yarn
+- Babel
+
+## in progress
+- Cypress
+
+## Versioning
+
+We use [SemVer](http://semver.org/) for versioning. For the versions available, see the [tags on this repository](https://github.com/your/project/tags). 
+
+## Authors
+
+* **BillRIzer** - *All work* - it's me
 
 
+## License
 
+This project is licensed under the MIT License - see the [LICENSE.md](LICENSE.md) file for details
+
+## Acknowledgments
