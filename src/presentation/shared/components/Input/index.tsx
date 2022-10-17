@@ -22,8 +22,9 @@ export const Input = ({
 }: Props) => {
   return (
     <Container>
-      <label htmlFor={id}>{label}</label>
-
+      {label&&(
+        <label htmlFor={id}>{label}</label>
+      )}
       <InputStyled
         id={id}
         name={id}
