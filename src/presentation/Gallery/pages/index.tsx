@@ -1,4 +1,4 @@
-import React, { useCallback, useEffect, useState } from "react";
+import React, { useEffect, useState } from "react";
 import { GalleryListCustom } from "../components/GalleryListCustom";
 import { GalleryListMosaic } from "../components/GalleryListPexels";
 import { SearchBoxComponent } from "../components/SearchBox";
@@ -9,19 +9,13 @@ import IconMosaic from "../../../assets/icons/icon-mosaic.svg";
 import { IconComponent } from "../../shared/components/Icon";
 import { FcKey } from "react-icons/fc";
 import { HashLink } from "react-router-hash-link";
-import {
-  PageStyled,
-  Tools,
-  Notifications,
-  Notification,
-  PexelApiKey,
-} from "./style";
+import { PageStyled, Tools, Notifications, Notification } from "./style";
 import { useTranslation } from "react-i18next";
 import { useLoading } from "../../shared/hooks/loading";
 import { Button } from "../../shared/components/Button";
 import { PaginationComponent } from "../../shared/components/Pagination";
-import { GroupedStyled } from "../../shared/components-styled/grouped";
-import { Link } from "react-router-dom";
+import { useModal } from "../../shared/hooks/modal";
+import { Input } from "../../shared/components/Input";
 
 enum ETypeGallery {
   MOSAIC = "MOSAIC",
@@ -36,13 +30,13 @@ export const GalleryPage = () => {
   const [pexelsApiKey, setPexelsApiKey] = useState<string | null>(
     localStorage.getItem("pexels-api-key")
   );
-  const [showPexelsInput, setShowPexelsInput] = useState<boolean>(false);
   const { gallery, loadGallery } = useDataFromPexels();
   const [perPage, setPerPage] = useState<number>(15);
   const [page, setPage] = useState<number>(1);
 
   const { t } = useTranslation();
   const { showLoading, hideLoading } = useLoading();
+  const { showModal } = useModal();
 
   const loadGalleryData = () => {
     showLoading();
@@ -50,11 +44,6 @@ export const GalleryPage = () => {
       hideLoading();
     });
   };
-
-  function handleSavePexelsApiLocalStorage(key: string) {
-    localStorage.setItem("pexels-api-key", key);
-    setShowPexelsInput(false);
-  }
 
   useEffect(() => {
     if (searchQuery == "") {
@@ -82,21 +71,39 @@ export const GalleryPage = () => {
     );
   }
 
+  function handlePexelChange(text: string) {
+    localStorage.setItem("pexels-api-key", text);
+    setPexelsApiKey(text);
+  }
+  
+  const PexelsApiKeyComp = () => (
+    <>
+      <Input
+        id="pexels-api"
+        type="text"
+        onChange={(e) => {
+          handlePexelChange(e.target.value);
+        }}
+        defaultValue={pexelsApiKey}
+        label={t("pexels_api_key")}
+      />
+    </>
+  );
+
+  const PexelsApiKeyModal = () => {
+    showModal({
+      header: {
+        title: t("pexels_api_key"),
+        icon: FcKey,
+        description: t("pexels_api_desc"),
+      },
+      body: PexelsApiKeyComp(),
+      disclaimer: t("pexels_api_discl"),
+    });
+  };
+
   return (
     <PageStyled className={!gallery ? "full" : ""} id="#top">
-      {showPexelsInput && (
-        <PexelApiKey>
-          {t("pexels_api_key")}
-          <input
-            type="text"
-            onChange={(e) => {
-              setPexelsApiKey(e.target.value);
-            }}
-            value={pexelsApiKey || ""}
-            onBlur={(e) => handleSavePexelsApiLocalStorage(e.target.value)}
-          />
-        </PexelApiKey>
-      )}
       <DividerStyled size="30px"></DividerStyled>
       <SearchBoxComponent
         searchQuery={searchQuery}
@@ -109,7 +116,7 @@ export const GalleryPage = () => {
         icon={FcKey}
         theme="only-text"
         label={t("gallery.change_pexels_api_key")}
-        onClick={() => setShowPexelsInput(!showPexelsInput)}
+        onClick={() => PexelsApiKeyModal()}
       ></Button>
 
       {gallery && (
