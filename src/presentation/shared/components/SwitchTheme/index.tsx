@@ -1,10 +1,8 @@
 import React, { useEffect, useState } from "react";
-import { useTranslation } from "react-i18next";
 import Switch from "react-switch";
 import { useTheme } from "../../../../application/hooks/themes";
 import IconMoon from "../../../../assets/icons/icon-moon.svg";
 import IconSun from "../../../../assets/icons/icon-sun.svg";
-import { IconComponent } from "../Icon";
 import { Container, MaskStyled } from "./style";
 
 interface Props {}
