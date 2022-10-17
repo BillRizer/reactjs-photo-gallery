@@ -8,7 +8,7 @@ import {
   Header,
   Modal,
   Screen,
-  Title,
+  Disclaimer,
   Close,
 } from "./styles";
 
@@ -52,6 +52,7 @@ const ModalComponent: React.FC<IProps> = ({ isActive, payload }) => {
           </Header>
         )}
         <Content>{payload?.body}</Content>
+        <Disclaimer>{payload?.disclaimer}</Disclaimer>
         <Footer>
           {payload?.actionsFooter && payload.actionsFooter.length > 0 && (
             <>

@@ -4,7 +4,7 @@ export const Modal = styled.div`
   background: ${(props) => props.theme.components.modal.bg};
   color: ${(props) => props.theme.components.modal.primary};
   z-index: 99;
-  padding: 60px;
+  padding: 60px 60px 25px 60px;
   border-radius: 4px;
   position: relative;
   max-width: 400px;
@@ -19,7 +19,6 @@ export const Header = styled.div`
   align-items: center;
   justify-content: start;
   margin-bottom: 10px;
-
   padding-bottom: 17px;
   & .force-big-icon div{
     width: 60px;
@@ -29,14 +28,14 @@ export const Header = styled.div`
   & >div:first-child{
     margin-right: 20px;
   }
+  p{
+    line-height:2rem;
+  }
 `;
-export const Title = styled.div`
-  text-overflow: ellipsis;
-  font-size: 18px;
-  width: 100%;
-  word-break: break-all;
-  white-space: nowrap;
-  overflow: hidden;
+export const Disclaimer = styled.div`
+  text-align: center;
+  margin-top: 20px;
+    font-size: 13px;
 `;
 export const Actions = styled.div``;
 export const Content = styled.div``;
