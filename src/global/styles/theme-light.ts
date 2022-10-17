@@ -1,5 +1,5 @@
 export const themeLight = {
-  name:'theme-light',
+  name: "theme-light",
   colors: {
     header: "#fff",
     primary: "#5636D3",
@@ -17,7 +17,7 @@ export const themeLight = {
     shape_light: "#3E3D42",
 
     title: "#363F5F",
-    title_inv:"#3E3D42",
+    title_inv: "#3E3D42",
     text: "#969CB2",
     background: "#F0F2F5",
   },
@@ -31,13 +31,13 @@ export const themeLight = {
     h1: "30px",
     h2: "24px",
   },
-  form:{
-    fields_bg:"#f5f3f4",
-    fields_text:"#3E3D42",
-    fields_bg_focus:"#f5f3f4",
-    fields_text_focus:"#3E3D42",
+  form: {
+    fields_bg: "#f5f3f4",
+    fields_text: "#3E3D42",
+    fields_bg_focus: "#f5f3f4",
+    fields_text_focus: "#3E3D42",
   },
-  button:{
+  button: {
     primary: "#5e60ce",
     primary_light: "rgba(94, 96, 206,0.9)",
     primary_text: "#f5f3f4",
@@ -45,19 +45,17 @@ export const themeLight = {
     default_light: "rgba(245, 243, 244,0.9)",
     default_text: "#3E3D42",
   },
-  components:{
-    loading:{
-      bg:"#f1f1f1",
-      text:"#3E3D42"
+  components: {
+    loading: {
+      bg: "#f1f1f1",
+      text: "#3E3D42",
     },
-    modal:{
-      scree_bg:"rgba(255, 255, 255,0.9)",
-      bg:"#fff",
-      primary:"#3E3D42",
-      primary_light:"rgba(62, 61, 66,0.5)",
-      secondary:"#FFFFFF",
-    }
-  }
-
+    modal: {
+      scree_bg: "rgba(63, 63, 63,0.9)",
+      bg: "#fff",
+      primary: "#3E3D42",
+      primary_light: "rgba(62, 61, 66,0.5)",
+      secondary: "#FFFFFF",
+    },
+  },
 };
-

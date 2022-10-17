@@ -51,8 +51,8 @@ export const themeDark = {
       text:"#f1f1f1"
     },
     modal:{
-      scree_bg:"rgba(255, 255, 255,0.9)",
-      bg:"#3E3D42",
+      scree_bg:"rgba(68, 68, 68,0.8)",
+      bg:"#2b2b2b",
       primary:"#F1F1F1",
       primary_light:"#F1F1F1",
       secondary:"#999",
