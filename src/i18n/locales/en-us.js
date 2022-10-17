@@ -21,7 +21,8 @@ const tra = {
         buy_coffe:"Buy me a coffee"
       },
       common:{
-        pexels_apikey_wrong:"Your <b>PEXELS api key is wrong</b>, But I looked up these static tomatoes for you"
+        pexels_apikey_wrong:"Your pexels api key is wrong, But I looked up these static tomatoes for you",
+        pexels_apikey_wrong_disclaimer:"add your api key and search again"
       },
       pexels_api_key:'Pexels API key',
       pexels_api_desc:'You need to use the pexels API key to search',

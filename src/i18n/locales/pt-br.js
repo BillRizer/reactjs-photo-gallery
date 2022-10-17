@@ -21,7 +21,8 @@ const tra= {
       buy_coffe:"Me pague um café."
     },
     common:{
-      pexels_apikey_wrong:"Sua <b>chave de api PEXELS está errada</b>, Mas busquei estes tomates estáticos para você"
+      pexels_apikey_wrong:"Sua chave de api pexels está errada, Mas busquei estes tomates estáticos para você",
+      pexels_apikey_wrong_disclaimer:"Adicione sua chave de api e busque novamente"
     },
     pexels_api_key:'Chave de api Pexels',
     pexels_api_desc:'É necessario utilizar a chave de API do pexels para buscar',
