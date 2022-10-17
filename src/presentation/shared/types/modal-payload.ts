@@ -10,7 +10,7 @@ export interface IFooterProps {
   interface IHeader{
     title:string;
     icon:any,
-    description:string;
+    description:any;
   }
   export interface IPayloadProps {
     header?:IHeader;
