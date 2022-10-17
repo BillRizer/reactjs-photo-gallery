@@ -1,7 +1,7 @@
 import React from "react";
 import { ThemeProvider } from "styled-components";
-import theme from "../styles/theme-dark";
+import {themeDark} from "../styles/theme-dark";
 
 export function MockTheme({ children }: any) {
-  return <ThemeProvider theme={theme}>{children}</ThemeProvider>;
+  return <ThemeProvider theme={themeDark}>{children}</ThemeProvider>;
 }

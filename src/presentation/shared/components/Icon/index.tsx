@@ -3,7 +3,7 @@ import { IconStyled } from "./style";
 
 interface Props {
   Icon: any;
-  size: "small" | "medium" | "large";
+  size: "tiny"|"small" | "medium" | "large";
   onClick?: any;
   cursorPointer?: boolean;
   disabled?: boolean;

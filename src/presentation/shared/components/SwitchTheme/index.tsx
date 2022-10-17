@@ -1,27 +1,40 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { useTranslation } from "react-i18next";
-import { Container } from "./style";
+import Switch from "react-switch";
+import { useTheme } from "../../../../application/hooks/themes";
+import IconMoon from "../../../../assets/icons/icon-moon.svg";
+import IconSun from "../../../../assets/icons/icon-sun.svg";
+import { IconComponent } from "../Icon";
+import { Container, MaskStyled } from "./style";
+
 interface Props {}
 export const SwitchTheme = ({ ...props }: Props) => {
-  const currentTheme = window.localStorage.getItem("theme");
-  const {t} = useTranslation()
-  
-  const toggleTheme = () => {
-    const localTheme = window.localStorage.getItem("theme");
-    if (localTheme === "light") {
-      setMode("dark");
-    } else {
-      setMode("light");
-    }
-  };
-
-  const setMode = (mode: any) => {
-    window.localStorage.setItem("theme", mode);
-  };
+  const [themeDark, setThemeDark] = useState(window.localStorage.getItem("theme")!=='dark'?true:false);
+  const { toggleTheme } = useTheme();
+  useEffect(() => {
+    toggleTheme()
+  }, [themeDark])
 
   return (
     <Container>
-      <button onClick={() => toggleTheme()}>{currentTheme === "light"?t('use_dark_theme'):t('use_light_theme')}</button>
+      <Switch
+        checkedIcon={
+          <MaskStyled>
+            <img src={IconSun} alt="" />
+          </MaskStyled>
+        }
+        uncheckedIcon={
+          <MaskStyled>
+            <img src={IconMoon} alt="" />
+          </MaskStyled>
+        }
+        offColor="#004DB1"
+        onChange={() => {
+          setThemeDark(!themeDark);
+        }}
+        checked={themeDark}
+      />
+
     </Container>
   );
 };

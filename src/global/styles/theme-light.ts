@@ -1,4 +1,5 @@
-const theme = {
+export const themeLight = {
+  name:'theme-light',
   colors: {
     header: "#fff",
     primary: "#5636D3",
@@ -59,4 +60,4 @@ const theme = {
   }
 
 };
-export default theme;
+

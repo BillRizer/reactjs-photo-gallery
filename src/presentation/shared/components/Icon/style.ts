@@ -3,6 +3,12 @@ interface Props{
     cursorPointer:boolean;
 }
 export const IconStyled = styled.div<Props>`
+display: flex;
+    &.tiny{
+        width: 14px;
+        height: 14px;
+        font-size: 14px;
+    }
     &.small{
         width: 18px;
         height: 18px;
