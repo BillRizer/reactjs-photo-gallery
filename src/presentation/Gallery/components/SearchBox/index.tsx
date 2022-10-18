@@ -9,6 +9,7 @@ import { Input } from "../../../shared/components/Input";
 import { Brand, Container } from "./style";
 import { FcSearch } from "react-icons/fc";
 import { GroupedStyled } from "../../../shared/components-styled/grouped";
+import { FiSearch } from "react-icons/fi";
 
 interface Props {
   searchQuery: string;
@@ -45,13 +46,12 @@ export const SearchBoxComponent = ({
           }}
         />
         <Button
-        icon={FcSearch}
+        icon={FiSearch}
           data-testid="submit"
           onClick={handleSubmit}
-          size="large"
           theme="primary"
           disabled={searchQuery.length > 0 ? false : true}
-          label={t("search")}
+          label=""
         ></Button>
       </GroupedStyled>
     </Container>
