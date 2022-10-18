@@ -111,9 +111,9 @@ export const GalleryPage = () => {
   const MockedMessageModal = () => {
     showModal({
       header: {
-        title: t("pexels_api_key"),
+        title: t("common.pexels_apikey_wrong"),
         icon: IconTomato,
-        description: t("common.pexels_apikey_wrong"),
+        description: t("common.pexels_apikey_wrong_description"),
       },
       disclaimer: t("common.pexels_apikey_wrong_disclaimer"),
     });
